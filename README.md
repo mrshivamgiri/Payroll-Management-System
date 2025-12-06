@@ -2,6 +2,19 @@
 
 A comprehensive full-stack payroll management application built with FastAPI (backend) and React (frontend). The system supports role-based access with separate dashboards for Admins and Employees.
 
+## 🚀 Live Demo
+
+**Coming Soon!** Follow the deployment guide below to deploy your own instance.
+
+### How to Get Live Links:
+1. See [DEPLOYMENT_LIVE.md](./DEPLOYMENT_LIVE.md) for detailed deployment instructions
+2. Recommended: Deploy free on [Render](https://render.com)
+3. Once deployed, update this README with your live URLs
+
+### Demo Credentials
+- **Admin**: `admin@company.com` / `Admin@2025!`
+- **Employee**: `hire-me@anshumat.org` / `HireMe@2025!`
+
 ## Tech Stack
 
 ### Backend
