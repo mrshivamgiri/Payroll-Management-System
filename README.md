@@ -1,5 +1,7 @@
 # Payroll Management System
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/mrshivamgiri/Payroll-Management-System)
+
 A comprehensive full-stack payroll management application built with FastAPI (backend) and React (frontend). The system supports role-based access with separate dashboards for Admins and Employees.
 
 ## 🚀 Live Demo
