@@ -45,10 +45,11 @@ This guide provides multiple options to deploy your Payroll Management System li
 1. **Visit**: https://vercel.com
 2. **Import Project**: Select GitHub repository
 3. **Configure**:
+   - **Root Directory**: `frontend` (important for monorepo setup)
    - Framework: Vite
-   - Build Command: `cd frontend && npm run build`
-   - Output Directory: `frontend/dist`
-   - Environment: Add backend URL
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Environment: Add backend URL if deployed separately
 4. **Deploy**
 
 ---
