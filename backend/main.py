@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException, status, Request
+from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List
@@ -9,7 +9,6 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime, Foreign
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 import enum
 from starlette.middleware.cors import CORSMiddleware
-import ipaddress
 
 SECRET_KEY = "change_me_in_env"
 ALGORITHM = "HS256"
@@ -61,24 +60,14 @@ class SalarySlip(Base):
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Payroll Management System")
-
-# Allowed IP networks
-ALLOWED_NETWORKS = [
-    ipaddress.ip_network('74.220.52.0/24'),
-    ipaddress.ip_network('74.220.60.0/24'),
-]
-
-@app.middleware("http")
-async def restrict_ip_middleware(request: Request, call_next):
-    client_ip = request.client.host
-    if client_ip and not any(ipaddress.ip_address(client_ip) in net for net in ALLOWED_NETWORKS):
-        raise HTTPException(status_code=403, detail="Access denied: IP not allowed")
-    response = await call_next(request)
-    return response
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174"],
+    allow_origins=[
+        "http://localhost:5173", 
+        "http://localhost:5174",
+        "https://payroll-mgmt-system-shivam.vercel.app",
+        "https://payroll-mgmt-system-*.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
