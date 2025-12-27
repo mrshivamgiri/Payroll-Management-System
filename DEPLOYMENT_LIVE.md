@@ -49,8 +49,16 @@ This guide provides multiple options to deploy your Payroll Management System li
    - Framework: Vite
    - Build Command: `npm run build`
    - Output Directory: `dist`
-   - Environment: Add backend URL if deployed separately
+   - **Environment Variables** (IMPORTANT):
+     - Key: `VITE_API_URL`
+     - Value: `https://your-backend-api.onrender.com` (or your backend URL)
 4. **Deploy**
+
+### Critical: Set Backend API URL
+After deploying the backend (see Option 1 above), you **must** set the `VITE_API_URL` environment variable in Vercel:
+- Go to Vercel Project Settings → Environment Variables
+- Add: `VITE_API_URL=https://your-backend-url.onrender.com`
+- Redeploy the frontend for changes to take effect
 
 ---
 
