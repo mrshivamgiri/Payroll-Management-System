@@ -309,12 +309,27 @@ async def update_expense_status(id: int, status: str, admin: User = Depends(get_
 async def seed_demo():
     db = SessionLocal()
     try:
+        # Check and create demo employee
         if not db.query(User).filter(User.email == "hire-me@anshumat.org").first():
-            demo = User(email="hire-me@anshumat.org", hashed_password=get_password_hash("HireMe@2025!"), role=Role.employee)
+            demo = User(
+                email="hire-me@shivam.org", 
+                hashed_password=get_password_hash("HireMe@2025!"), 
+                role=Role.employee
+            )
             db.add(demo)
+        
+        # Check and create demo admin
         if not db.query(User).filter(User.email == "admin@company.com").first():
-            admin = User(email="admin@company.com", hashed_password=get_password_hash("Admin@2025!"), role=Role.admin)
+            admin = User(
+                email="shivam@company.com", 
+                hashed_password=get_password_hash("Admin@2025!"), 
+                role=Role.admin
+            )
             db.add(admin)
+        
         db.commit()
+    except Exception as e:
+        print(f"Seed demo error: {e}")
+        db.rollback()
     finally:
         db.close()
